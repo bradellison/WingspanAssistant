@@ -19,6 +19,13 @@ public class DecreaseEggButton : MonoBehaviour
     }
 
     private void OnMouseDown() {
+        playingCard.isClicked = true;
+        playingCard.clickCount += 1;
         playingCard.DecreaseEggs();
     }
+
+    private void OnMouseUp() {
+        playingCard.isClicked = false;
+    }
+
 }

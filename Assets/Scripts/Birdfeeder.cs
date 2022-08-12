@@ -40,7 +40,7 @@ public class Birdfeeder : MonoBehaviour
         usedFoodDice = new List<GameObject>();
     }
 
-    void RollAllDice() {
+    public void RollAllDice() {
 
         ResetDice();
 

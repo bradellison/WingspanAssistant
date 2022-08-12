@@ -16,6 +16,12 @@ public class IncreaseEggButton : MonoBehaviour
     }
 
     private void OnMouseDown() {
+        playingCard.isClicked = true;
+        playingCard.clickCount += 1;
         playingCard.IncreaseEggs();
+    }
+
+    private void OnMouseUp() {
+        playingCard.isClicked = false;
     }
 }

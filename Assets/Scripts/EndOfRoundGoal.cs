@@ -9,6 +9,9 @@ public class EndOfRoundGoal : MonoBehaviour
     public GameObject winningTokenLocation;
     public GameObject winningTokenPrefab;
     int clicks;
+    int clickCount;
+    bool isClicked;
+    public EndOfRoundGoals endOfRoundGoals;
 
     GameObject winningToken;
 
@@ -23,7 +26,19 @@ public class EndOfRoundGoal : MonoBehaviour
         
     }
 
+    IEnumerator CheckDelete() {
+        int clicksAtStart = clickCount;
+        yield return new WaitForSeconds(1f);
+        if(clicksAtStart == clickCount && isClicked) {
+            endOfRoundGoals.currentGoals.Remove(this.gameObject);
+            Destroy(this.gameObject);
+        }
+    }
+
     private void OnMouseDown() {
+        isClicked = true;
+        clickCount++;
+        StartCoroutine(CheckDelete());
         if(clicks == 0) {
             winningToken = Instantiate(winningTokenPrefab);
             winningToken.transform.parent = transform;
@@ -37,6 +52,10 @@ public class EndOfRoundGoal : MonoBehaviour
             Destroy(winningToken);
             clicks = 0;
         }
+    }
+
+    private void OnMouseUp() {
+        isClicked = false;
     }
 
 }

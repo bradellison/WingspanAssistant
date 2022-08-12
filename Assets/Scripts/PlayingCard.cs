@@ -12,8 +12,17 @@ public class PlayingCard : MonoBehaviour
     public int currentEggCount;
     public List<GameObject> eggsInNest;
     int maxEggCount;
-    public DeleteCardEnabler deleteCardEnabler;
 
+    public bool isClicked;
+    public int clickCount;
+
+    IEnumerator RemoveCard() {
+        int clicksAtStart = clickCount;
+        yield return new WaitForSeconds(1f);
+        if(clickCount == clicksAtStart && isClicked) {
+            Destroy(this.gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +39,6 @@ public class PlayingCard : MonoBehaviour
             for (int i = 0; i < 100; i++) {
                 int locIndex = Random.Range(0, eggLocations.Count);
                 GameObject newLocation = eggLocations[locIndex];
-                Debug.Log(usedEggLocations);
-                Debug.Log(newLocation);
                 if(!usedEggLocations.Contains(newLocation)) {
                     currentEggCount += 1;
                     GameObject egg = Instantiate(eggGO);
@@ -60,14 +67,11 @@ public class PlayingCard : MonoBehaviour
             Destroy(eggToRemove);
 
             currentEggCount -= 1;
-            //eggImage.GetComponent<SpriteRenderer>().sprite = eggImages[currentEggCount];    
         }    
     }
 
     void CheckDelete() {
-        if(deleteCardEnabler.canDeleteCards) {
-            Destroy(this.gameObject);
-        }
+        StartCoroutine(RemoveCard());
     }
 
     // Update is called once per frame

@@ -14,21 +14,21 @@ public class HeldFood : MonoBehaviour
 
     public bool isP1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    public void RemoveAllFood() {
+        int totalFood = heldFood.Count;
+        for (int i = 0; i < totalFood; i++) {
+            RemoveFood();
+        }
     }
 
     public void RemoveFood() {
-        Debug.Log("RemoveFood");
         GameObject removedFood = heldFood[heldFood.Count - 1];
         heldFood.Remove(removedFood);
         Destroy(removedFood);
     }
 
     public void AddFood() {
-        Debug.Log("addfood");
         GameObject newFood = Instantiate(heldFoodPrefab);
 
         newFood.GetComponent<FoodIconInventory>().heldFood = this;
@@ -61,9 +61,4 @@ public class HeldFood : MonoBehaviour
         heldFood.Add(newFood);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -9,17 +9,12 @@ public class EndOfRoundGoals : MonoBehaviour
     public List<Sprite> endOfRoundOptions;
     public GameObject endOfRoundGoalPrefab;
     public List<Sprite> chosenGoals;
+    public List<GameObject> currentGoals;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public void ResetGoals() {
+        foreach(GameObject goal in currentGoals) {
+            Destroy(goal);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
