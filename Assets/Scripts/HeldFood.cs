@@ -9,27 +9,38 @@ public class HeldFood : MonoBehaviour
     public List<GameObject> heldFood;
     public GameObject addFoodButton;
     public GameObject heldFoodParent;
+    
+    AudioSource audioSource;
+    public AudioClip getFoodClip;
+    public AudioClip eatFoodClip;
 
     public float foodSpacing;
 
     public bool isP1;
 
+    void Start() {
+        audioSource = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSource>();
+    }
 
     public void RemoveAllFood() {
         int totalFood = heldFood.Count;
         for (int i = 0; i < totalFood; i++) {
-            RemoveFood();
+            RemoveFood(true);
         }
     }
 
-    public void RemoveFood() {
+    public void RemoveFood(bool isRemoveFromReset) {
         GameObject removedFood = heldFood[heldFood.Count - 1];
         heldFood.Remove(removedFood);
+        if(!isRemoveFromReset) {
+            audioSource.PlayOneShot(eatFoodClip);
+        }
         Destroy(removedFood);
     }
 
     public void AddFood() {
         GameObject newFood = Instantiate(heldFoodPrefab);
+        audioSource.PlayOneShot(getFoodClip);
 
         newFood.GetComponent<FoodIconInventory>().heldFood = this;
         newFood.transform.parent = heldFoodParent.transform;

@@ -7,6 +7,7 @@ TagManager:
   - EndOfRound
   - SettingsManager
   - CanvasManager
+  - AudioManager
   layers:
   - Default
   - TransparentFX

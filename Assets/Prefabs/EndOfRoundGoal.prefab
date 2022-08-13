@@ -135,6 +135,8 @@ MonoBehaviour:
   - {r: 0.7725491, g: 0.56078434, b: 0.32156864, a: 1}
   winningTokenLocation: {fileID: 6806066473755706160}
   winningTokenPrefab: {fileID: 8647994181151474511, guid: b937f11d80f1147d7a4612fe9fdbe50f, type: 3}
+  endOfRoundGoals: {fileID: 0}
+  playGoalClip: {fileID: 8300000, guid: 3d7fd69b62e2345ef85b4100e193e760, type: 3}
 --- !u!61 &8036942318705131526
 BoxCollider2D:
   m_ObjectHideFlags: 0

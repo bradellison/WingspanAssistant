@@ -15,9 +15,15 @@ public class EndOfRoundGoal : MonoBehaviour
 
     GameObject winningToken;
 
+    AudioSource audioSource;
+    public AudioClip playGoalClip;
+        
+
     void Start()
     {
         clicks = 0;
+        audioSource = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSource>();
+        audioSource.PlayOneShot(playGoalClip);
     }
 
     // Update is called once per frame

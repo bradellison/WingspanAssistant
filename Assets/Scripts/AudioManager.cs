@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoodIconInventory : MonoBehaviour
+public class AudioManager : MonoBehaviour
 {
-
-    public HeldFood heldFood;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +15,4 @@ public class FoodIconInventory : MonoBehaviour
     {
         
     }
-
-    private void OnMouseDown() {
-        heldFood.RemoveFood(false);
-    }
-
 }

@@ -81,6 +81,8 @@ MonoBehaviour:
   heldFood: []
   addFoodButton: {fileID: 4468837527514700655}
   heldFoodParent: {fileID: 4468837525860749394}
+  getFoodClip: {fileID: 8300000, guid: aa5654cc50b6d415d8a0af3dd0efac2f, type: 3}
+  eatFoodClip: {fileID: 8300000, guid: 3b7085d1d045b4bdbbd5d2a6fa1f10da, type: 3}
   foodSpacing: 0.4
   isP1: 1
 --- !u!1 &4468837527514700655

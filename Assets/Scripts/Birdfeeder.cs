@@ -14,12 +14,16 @@ public class Birdfeeder : MonoBehaviour
     public List<GameObject> usedFoodDice;
 
     public GameObject foodDiceParent;
-
     public GameObject foodDicePrefab;
+
+    AudioSource audioSource;
+    public AudioClip diceRollClip;
+    public AudioClip moveDiceClip;
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSource>();
         RollAllDice();
     }
 
@@ -66,7 +70,11 @@ public class Birdfeeder : MonoBehaviour
     public void RerollButtonHit(bool isRollForAvailableFood) {
         if(isRollForAvailableFood) {
             RollAllDice();
+            audioSource.PlayOneShot(diceRollClip);
         } else {
+            if(usedFoodDice.Count > 0) {
+                audioSource.PlayOneShot(diceRollClip);
+            }
             RollAllUsedDice();
         }
     }
@@ -100,7 +108,8 @@ public class Birdfeeder : MonoBehaviour
         foodDiceGO.transform.position = newFoodLocationGO.transform.position;
         newFoodLocationGO.GetComponent<FoodLocation>().isSpaceOccupied = true; 
         foodDiceGO.GetComponent<FoodDice>().foodLocation = newFoodLocationGO.GetComponent<FoodLocation>();               
-        foodDice.isAvailable = !foodDice.isAvailable;        
+        foodDice.isAvailable = !foodDice.isAvailable; 
+        audioSource.PlayOneShot(moveDiceClip);
     }
 
 

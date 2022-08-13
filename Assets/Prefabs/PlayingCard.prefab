@@ -514,7 +514,12 @@ MonoBehaviour:
   eggGO: {fileID: 4273322746486615713, guid: 12c415fb885df45dfaecc6052b1b18bc, type: 3}
   currentEggCount: 0
   eggsInNest: []
-  deleteCardEnabler: {fileID: 0}
+  playCardClip: {fileID: 8300000, guid: 3d7fd69b62e2345ef85b4100e193e760, type: 3}
+  layEggClip: {fileID: 8300000, guid: df18c178eb53b4d6cb69c4ccb3584b80, type: 3}
+  removeEggClip: {fileID: 8300000, guid: 212448b3b5d844cd2a69c410a8058a05, type: 3}
+  deleteCardClip: {fileID: 8300000, guid: a7cae662f51e14b6d9c74b260fee19fb, type: 3}
+  isClicked: 0
+  clickCount: 0
 --- !u!61 &-6301496028069874251
 BoxCollider2D:
   m_ObjectHideFlags: 0

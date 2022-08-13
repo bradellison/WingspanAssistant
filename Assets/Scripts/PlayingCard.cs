@@ -13,6 +13,13 @@ public class PlayingCard : MonoBehaviour
     public List<GameObject> eggsInNest;
     int maxEggCount;
 
+    AudioSource audioSource;
+    public AudioClip playCardClip;
+    public AudioClip layEggClip;
+    public AudioClip removeEggClip;
+    public AudioClip deleteCardClip;
+
+
     public bool isClicked;
     public int clickCount;
 
@@ -20,6 +27,7 @@ public class PlayingCard : MonoBehaviour
         int clicksAtStart = clickCount;
         yield return new WaitForSeconds(1f);
         if(clickCount == clicksAtStart && isClicked) {
+            audioSource.PlayOneShot(deleteCardClip);
             Destroy(this.gameObject);
         }
     }
@@ -31,6 +39,8 @@ public class PlayingCard : MonoBehaviour
         maxEggCount = eggLocations.Count;
         usedEggLocations = new List<GameObject>();
         eggsInNest = new List<GameObject>();
+        audioSource = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSource>();
+        audioSource.PlayOneShot(playCardClip);
     }
 
     public void IncreaseEggs() {
@@ -49,6 +59,7 @@ public class PlayingCard : MonoBehaviour
                     egg.GetComponent<SpriteRenderer>().sprite = eggSprites[eggIndex];
                     eggsInNest.Add(egg);
                     usedEggLocations.Add(newLocation);
+                    audioSource.PlayOneShot(layEggClip);
                     return;
                 }
             }
@@ -65,7 +76,7 @@ public class PlayingCard : MonoBehaviour
             usedEggLocations.Remove(locationToRemove);
             eggsInNest.Remove(eggToRemove);
             Destroy(eggToRemove);
-
+            audioSource.PlayOneShot(removeEggClip);
             currentEggCount -= 1;
         }    
     }
