@@ -18,6 +18,7 @@ public class Birdfeeder : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip diceRollClip;
+    public AudioClip unusedDiceRollClip;
     public AudioClip moveDiceClip;
 
     // Start is called before the first frame update
@@ -73,7 +74,7 @@ public class Birdfeeder : MonoBehaviour
             audioSource.PlayOneShot(diceRollClip);
         } else {
             if(usedFoodDice.Count > 0) {
-                audioSource.PlayOneShot(diceRollClip);
+                audioSource.PlayOneShot(unusedDiceRollClip);
             }
             RollAllUsedDice();
         }

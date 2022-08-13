@@ -8,6 +8,7 @@ TagManager:
   - SettingsManager
   - CanvasManager
   - AudioManager
+  - EndOfRoundScoreboard
   layers:
   - Default
   - TransparentFX

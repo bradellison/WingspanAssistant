@@ -17,7 +17,10 @@ public class EndOfRoundGoal : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip playGoalClip;
-        
+    public AudioClip clickGoalClip;
+    
+    public GameObject roundEndScoreboard;
+    bool scoreboardChanged;
 
     void Start()
     {
@@ -32,36 +35,49 @@ public class EndOfRoundGoal : MonoBehaviour
         
     }
 
-    IEnumerator CheckDelete() {
+    IEnumerator CheckOpenGoals() {
         int clicksAtStart = clickCount;
         yield return new WaitForSeconds(1f);
         if(clicksAtStart == clickCount && isClicked) {
-            endOfRoundGoals.currentGoals.Remove(this.gameObject);
-            Destroy(this.gameObject);
-        }
-    }
-
-    private void OnMouseDown() {
-        isClicked = true;
-        clickCount++;
-        StartCoroutine(CheckDelete());
-        if(clicks == 0) {
-            winningToken = Instantiate(winningTokenPrefab);
-            winningToken.transform.parent = transform;
-            winningToken.transform.position = new Vector3(winningTokenLocation.transform.position.x, winningTokenLocation.transform.position.y, winningTokenLocation.transform.position.z + 1);
-            winningToken.GetComponent<SpriteRenderer>().color = playerColors[0];
-            clicks++;
-        } else if(clicks == 1) {
-            winningToken.GetComponent<SpriteRenderer>().color = playerColors[1];
-            clicks++;            
-        } else if(clicks == 2) {
-            Destroy(winningToken);
-            clicks = 0;
+            //endOfRoundGoals.currentGoals.Remove(this.gameObject);
+            //Destroy(this.gameObject);
+            GameObject existingRoundEndScoreboard = GameObject.FindGameObjectWithTag("EndOfRoundScoreboard");
+            if(existingRoundEndScoreboard == null) {
+                Instantiate(roundEndScoreboard);
+                scoreboardChanged = true;
+            } else {
+                existingRoundEndScoreboard.GetComponent<RoundEndScoreboard>().DestroyScoreboard();
+                scoreboardChanged = true;
+            }
         }
     }
 
     private void OnMouseUp() {
         isClicked = false;
+        if(!scoreboardChanged) {
+            if(clicks == 0) {
+                winningToken = Instantiate(winningTokenPrefab);
+                winningToken.transform.parent = transform;
+                winningToken.transform.position = new Vector3(winningTokenLocation.transform.position.x, winningTokenLocation.transform.position.y, winningTokenLocation.transform.position.z + 1);
+                winningToken.GetComponent<SpriteRenderer>().color = playerColors[0];
+                audioSource.PlayOneShot(clickGoalClip);
+                clicks++;
+            } else if(clicks == 1) {
+                winningToken.GetComponent<SpriteRenderer>().color = playerColors[1];
+                audioSource.PlayOneShot(clickGoalClip);
+                clicks++;            
+            } else if(clicks == 2) {
+                Destroy(winningToken);
+                clicks = 0;
+            }
+        }
+        scoreboardChanged = false;
+    }
+
+    private void OnMouseDown() {
+        isClicked = true;
+        clickCount++;
+        StartCoroutine(CheckOpenGoals());
     }
 
 }
