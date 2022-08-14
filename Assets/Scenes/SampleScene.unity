@@ -4049,6 +4049,7 @@ MonoBehaviour:
   foodDiceParent: {fileID: 471378987}
   foodDicePrefab: {fileID: 9203173106909481773, guid: cffb6c161011d4be2bcf98df9a8eb3b8, type: 3}
   diceRollClip: {fileID: 8300000, guid: a0a91d12be1834010b481a348269a133, type: 3}
+  unusedDiceRollClip: {fileID: 8300000, guid: 88391f0a8e8b347eca1dd0d6bb043388, type: 3}
   moveDiceClip: {fileID: 8300000, guid: bf49c697d878c403d87ee38f959abc94, type: 3}
 --- !u!4 &1369723142
 Transform:
