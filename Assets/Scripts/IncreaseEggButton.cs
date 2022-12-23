@@ -16,12 +16,24 @@ public class IncreaseEggButton : MonoBehaviour
     }
 
     private void OnMouseDown() {
+        if(playingCard.playerBoard.isCardHighlighted)
+        {
+            playingCard.playerBoard.BoardClicked();
+            return;
+        }
+
         playingCard.isClicked = true;
-        playingCard.clickCount += 1;
-        playingCard.IncreaseEggs();
+        playingCard.CheckHold();
     }
 
     private void OnMouseUp() {
+        if(!playingCard.isClicked)
+        {
+            return;
+        }
+
         playingCard.isClicked = false;
+        playingCard.clickCount += 1;
+        playingCard.IncreaseEggs();
     }
 }

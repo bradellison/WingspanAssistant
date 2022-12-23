@@ -8,7 +8,7 @@ public class EndOfRoundGoal : MonoBehaviour
     public List<Color> playerColors;
     public GameObject winningTokenLocation;
     public GameObject winningTokenPrefab;
-    int clicks;
+    public int clicks;
     int clickCount;
     bool isClicked;
     public EndOfRoundGoals endOfRoundGoals;

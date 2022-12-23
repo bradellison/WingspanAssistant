@@ -11,10 +11,26 @@ public class EndOfRoundGoals : MonoBehaviour
     public List<Sprite> chosenGoals;
     public List<GameObject> currentGoals;
 
+    public List<EndOfRoundGoal> endOfRoundGoals;
+
     public void ResetGoals() {
         foreach(GameObject goal in currentGoals) {
             Destroy(goal);
         }
+        currentGoals = new List<GameObject>();
+
+        //foreach (Sprite goal in chosenGoals)
+        //{
+        //    Destroy(goal);
+        //}
+        chosenGoals = new List<Sprite>();
+
+        foreach(EndOfRoundGoal goal in endOfRoundGoals)
+        {
+            Destroy(goal);
+        }
+        endOfRoundGoals = new List<EndOfRoundGoal>();
+       
     }
 
 }

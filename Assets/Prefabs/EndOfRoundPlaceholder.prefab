@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 105135217144947614}
+  - component: {fileID: 6600422068375489176}
   - component: {fileID: 105135217144947585}
   - component: {fileID: 105135217144947584}
   - component: {fileID: 105135217144947615}
+  - component: {fileID: 2928089958294440619}
   m_Layer: 0
   m_Name: EndOfRoundPlaceholder
   m_TagString: Untagged
@@ -19,8 +20,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &105135217144947614
-Transform:
+--- !u!224 &6600422068375489176
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -34,6 +35,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 5.59, y: 8.71}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &105135217144947585
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -124,3 +130,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.96, y: 7.62}
   m_EdgeRadius: 0
+--- !u!222 &2928089958294440619
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105135217144947613}
+  m_CullTransparentMesh: 1

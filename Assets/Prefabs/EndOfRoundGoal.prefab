@@ -131,10 +131,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerColors:
-  - {r: 0.47780627, g: 0.6509434, b: 0.16273585, a: 1}
   - {r: 1, g: 0.85797274, b: 0, a: 1}
+  - {r: 0.4784314, g: 0.6509804, b: 0.16078432, a: 1}
   winningTokenLocation: {fileID: 6806066473755706160}
   winningTokenPrefab: {fileID: 8647994181151474511, guid: b937f11d80f1147d7a4612fe9fdbe50f, type: 3}
+  clicks: 0
   endOfRoundGoals: {fileID: 0}
   playGoalClip: {fileID: 8300000, guid: 3d7fd69b62e2345ef85b4100e193e760, type: 3}
   clickGoalClip: {fileID: 8300000, guid: 87cab233846c646e8bfa2323b2c7838c, type: 3}

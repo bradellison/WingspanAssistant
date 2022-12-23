@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public PlayerBoard player1Board;
     public PlayerBoard player2Board;
     public EndOfRoundGoals endOfRoundGoals;
+    public ScoreSheetCanvas scoresheetCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -46,5 +47,6 @@ public class GameManager : MonoBehaviour
         player1Board.DeleteAllCards();
         player2Board.DeleteAllCards();
         endOfRoundGoals.ResetGoals();
+        scoresheetCanvas.ResetAll();
     }
 }
